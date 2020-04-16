@@ -29,13 +29,13 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
     const index = users.indexOf(socket.id);
     users.splice(index, 1);
     io.emit('disconnect', socket.id);
   });
 });
 
-http.listen(8080, () => {
-  console.log('listening on 8080');
+const PORT = process.env.PORT || 5000;
+http.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
 });
